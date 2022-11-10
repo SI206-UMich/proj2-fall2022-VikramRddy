@@ -77,8 +77,8 @@ def get_listing_information(listing_id):
     soup = BeautifulSoup(files_hand, "html.parser")
     f_hand.close()
 
-    #policy_number = soup.find("li", class_ = "f19phm7j dir dir-ltr").span.text
-   # policy_number = poli
+    policy_number = soup.find("li", class_ = "f19phm7j dir dir-ltr").span.text
+    policy_number = poli
 
 
 
