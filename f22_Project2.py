@@ -1,3 +1,7 @@
+#Name: Vikram Reddy
+#ID: 9700 9354
+# Worked with: Christopher Sayah, Dhwani R
+
 from xml.sax import parseString
 from bs4 import BeautifulSoup
 import re
@@ -25,7 +29,22 @@ def get_listings_from_search_results(html_file):
         ('Loft in Mission District', 210, '1944564'),  # example
     ]
     """
-    pass
+
+    rsp = open(html_file, "r")
+    soup = BeautifulSoup(rsp, "html.parser")
+    rsp.close()
+    title_lst = soup.find_all("div", class_="t1jojoys dir dir-ltr")
+    cost_lst = soup.find_all("span", class_="_tyxjp1")
+    listng_lst = soup.find_all("a", class_="ln2bl2p dir dir-ltr")
+
+    reslt_lst = []
+    for x in range(len(title_lst)):
+        reslt_lst.append((title_lst[x].text, int(cost_lst[x].text.lstrip("$")), listng_lst[x].get("aria-labelledby").lstrip("title")))
+    
+    return (reslt_lst)
+
+
+    
 
 
 def get_listing_information(listing_id):
@@ -52,7 +71,15 @@ def get_listing_information(listing_id):
         number of bedrooms
     )
     """
-    pass
+    files = "html_files/listing_" + listing_id + ".html"
+    f_hand = open(files, "r")
+    files_hand = f_hand.read()
+    soup = BeautifulSoup(files_hand, "html.parser")
+    f_hand.close()
+
+    #policy_number = soup.find("li", class_ = "f19phm7j dir dir-ltr").span.text
+   # policy_number = poli
+
 
 
 def get_detailed_listing_database(html_file):
