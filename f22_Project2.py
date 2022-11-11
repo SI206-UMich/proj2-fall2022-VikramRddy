@@ -97,7 +97,7 @@ def get_detailed_listing_database(html_file):
     ]
     """
     pass
-
+     
 
 def write_csv(data, filename):
     """
