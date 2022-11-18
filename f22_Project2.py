@@ -158,7 +158,7 @@ def write_csv(data, filename):
     This function should not return anything.
     """
     
-    my_file = open(filename, "w")
+    my_file = open(filename, "w")  
     writer = csv.writer(my_file)
     titles = ["Listing Title", "Cost", "Listing ID", "Policy Number", "Place Type", "Number of Bedrooms"]
     writer.writerow(titles)
